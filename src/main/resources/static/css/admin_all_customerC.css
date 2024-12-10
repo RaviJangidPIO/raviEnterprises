@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table td {
+    font-size: 14px;
+}
+
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#customerSearch {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}

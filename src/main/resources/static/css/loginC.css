@@ -1,0 +1,99 @@
+body {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.centerPartOfPage{
+    justify-content: center;
+    justify-items: center;
+}
+
+
+.signup-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 100vw;
+    max-width: 500px;
+
+}
+.innerDivForCenterContent {
+    width: 100%;
+   justify-items: center;
+}
+
+.signup-card h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: #2a5298;
+}
+
+.profile-img-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.profile-img-container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2a5298;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-img-container img:hover {
+    transform: scale(1.1);
+}
+
+.profile-img-container label {
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2a5298;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    border-color: #2a5298;
+    box-shadow: 0 0 5px rgba(42, 82, 152, 0.5);
+}
+
+.btn-primary {
+    background-color: #2a5298;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1e3c72;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+.btnDiv{
+    display: flex;
+    
+}

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index fragment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/static/css/index_fragmentC.css"> 
+    </head>
+
+<body>
+
+    <!-- header -->
+    <div th:fragment="header">
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Ravi Enterprises</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/public/home">Home</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login-page">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/public/signup">Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/public/all-product">All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/public/aboutUs">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Orders</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <!-- footer -->
+     <div th:fragment="footer">
+        <footer>
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 about-footer">
+                            <h3>Ravi Enterprises</h3>
+                            <ul>
+                                <li><a href="tel:(010) 1234 4321">
+                                    <i class="fa fa-phone fa-flip-horizontal"></i>(+91) 8786545453</a></li>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    pl-21 , triveni dham 3rd, near sanskar international
+                                    <br/>harmada,jaipur
+                                    <br/>Rajasthan,303471
+                                </li>
+                            </ul>
+                            <a href="" class="btn red-btn">Order Now</a>
+                        </div>
+                        <div class="col-md-6 col-lg-2 page-more-info">
+                            <div class="footer-title">
+                                <h4>Page links</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Popular Orders</a></li>
+                                <li><a href="#">Clients</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+        
+                        <div class="col-md-6 col-lg-3 page-more-info">
+                            <div class="footer-title">
+                                <h4>More Info</h4>
+                            </div>
+                            <ul>
+                                <li><a href="#">Suppliers</a></li>
+                                <li><a href="#">News room</a></li>
+                                <li><a href="#">Consult </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-4 open-hours">
+                            <div class="footer-title">
+                                <h4>Open hours</h4>
+                                <ul class="footer-social">
+                                    <li><a href="" target="_blank"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li><a href="" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="" target="_blank"><i class="fa fa-linkedin-in"></i></a></li>
+        
+                                </ul>
+                            </div>
+                            <table class="table" style="color:#fff">
+                                <tbody>
+                                    <tr>
+                                        <td><i class="fa fa-clock-o"></i>Full week</td>
+                                        <td>9:00am - 9:00pm_ </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class="footer-logo">
+        
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="https://i.ibb.co/vxc577d/dummy-logo3.jpg"></td>
+                                        <td><img src="https://i.ibb.co/vxc577d/dummy-logo3.jpg"></td>
+                                        <td><img src="https://i.ibb.co/vxc577d/dummy-logo3.jpg"></td>
+                                        <td><img src="https://i.ibb.co/vxc577d/dummy-logo3.jpg"></td>
+                                        <td><img src="https://i.ibb.co/vxc577d/dummy-logo3.jpg"></td>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="footer-bottom">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="">Privacy policy</a>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>Ravi Enterprises @ 2024 All rights reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
