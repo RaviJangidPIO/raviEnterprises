@@ -16,7 +16,7 @@
     <div class="centerPartOfPage p-4">
         <div class="signup-card">
             <h2>Create Account</h2>
-            <form action="/api/public/uploadInDB" method="POST" id="signupForm" enctype="multipart/form-data">
+            <form action="uploadInDB" method="POST" id="signupForm" enctype="multipart/form-data">
                 <!-- Profile Image -->
                 <div class="profile-img-container">
                     <img id="profileImagePreview" src="/static/files/avatarpng.png" alt="Profile Preview">
@@ -52,6 +52,7 @@
                         placeholder="Confirm Password" required>
                     <div id="confirmPasswordError" class="error-message"></div>
                 </div>
+              
                 <!-- Submit Button -->
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -61,7 +62,8 @@
     </div>
     <div th:insert="index_fragment :: footer"></div>
 
-    <script src="/static/javascript/jquery-3.7.1.js"></script>
+
+    <script src="/static/javascript/jquery-3.7.1.min.js"></script>
     <script src="/static/javascript/customer_signupJ.js"></script>
 
 </body>

@@ -9,6 +9,15 @@ document.getElementById('profileImage').addEventListener('change', function (eve
     }
 });
 
+// $(document).on('click',"#customerSignUpBtn",()=>{
+//     let email = $("#email").val();
+//     $.post("/api/rest-public/signup-check",{email:email},(response)=>{
+//         if(response==true){
+//             localStorage.setItem("currentUser","null");
+//         }
+//     });
+// });
+
 
 // Real-time form validation
 document.getElementById('signupForm').addEventListener('submit', function (event) {

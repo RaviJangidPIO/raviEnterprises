@@ -12,8 +12,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/api/public")
 public class PublicController {
-    @Autowired
-    private PublicService publicService;
+
 
     @GetMapping("/home")
     public String home(){
@@ -31,18 +30,7 @@ public class PublicController {
         return "customer_allProducts";
     }
 
-    //http://localhost:8080/api/public/signup
-    @GetMapping("/signup")
-    public String signup(){
-        return "customer_signup";
-    }
 
-    // /api/public/uploadInDB
-    @PostMapping("/uploadInDB")
-    public String uploadInDB(@ModelAttribute CustomUserRequestRestDto requestCustomDto, @RequestPart("profileImage") MultipartFile file) throws IOException {
-        publicService.uploadData(requestCustomDto,file);
-        return "index";
-    }
 
 
 

@@ -1,27 +1,43 @@
 package com.remind.Quicker.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Setter;
+
+import java.util.List;
 
 @Entity
-@Builder
-@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private Float price;
+
+    @Column(nullable = false)
     private Long pieces;
+
     private String description;
+
     @Column(columnDefinition = "LONGTEXT")
     private String productImage;
 
+    @Column(nullable = false)
+    private String deleteStatus;
+
     public Product() {
+    }
+
+    public Product(Long id, String name, Float price, Long pieces, String description, String productImage, String deleteStatus) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.pieces = pieces;
+        this.description = description;
+        this.productImage = productImage;
+        this.deleteStatus = deleteStatus;
     }
 
     public Long getId() {
@@ -70,5 +86,13 @@ public class Product {
 
     public void setProductImage(String productImage) {
         this.productImage = productImage;
+    }
+
+    public String getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(String deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 }
