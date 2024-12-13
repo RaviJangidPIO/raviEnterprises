@@ -52,7 +52,6 @@ function getCustomerFromController(pageDetail) {
         },
         error: function (xhr, status, error) {
             console.error("Error adding gamer: ", error);
-            console.error("Response: ", xhr.responseText);
         }
     });
 

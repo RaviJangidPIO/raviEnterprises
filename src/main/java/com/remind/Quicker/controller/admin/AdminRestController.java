@@ -29,7 +29,7 @@ public class AdminRestController {
     @PostMapping("/get-users")
     public List<CustomUser> getUsers(@RequestBody PageDetail pageDetail){
         PageRequest pageable = PageRequest.of(pageDetail.getPageNumber(),pageDetail.getPageSize());
-        Page<CustomUser> pagesData = customUserRepository.findAll(pageable);
+        Page<CustomUser> pagesData = customUserRepository.findAllActivatedUsers(pageable);
         List<CustomUser> customUsersList =  pagesData.getContent();
         pagesData.getContent().forEach(System.out::println);
         return customUsersList;
@@ -39,7 +39,7 @@ public class AdminRestController {
     @PostMapping("/get-productsPaging")
     public List<Product> getProducts(@RequestBody PageDetail pageDetail){
         PageRequest pageable = PageRequest.of(pageDetail.getPageNumber(),pageDetail.getPageSize());
-        Page<Product> pagesData = productRepository.findAll(pageable);
+        Page<Product> pagesData = productRepository.findAllActivatedProduct(pageable);
         List<Product> productList =  pagesData.getContent();
         return productList;
     }

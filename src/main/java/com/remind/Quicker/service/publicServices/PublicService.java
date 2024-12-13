@@ -5,7 +5,10 @@ import com.remind.Quicker.entities.CustomUser;
 import com.remind.Quicker.entities.Product;
 import com.remind.Quicker.repository.CustomUserRepository;
 import com.remind.Quicker.repository.ProductRepository;
+import com.remind.Quicker.utils.CustomerStatus;
+import com.remind.Quicker.utils.DeleteStatus;
 import com.remind.Quicker.utils.PageDetail;
+import com.remind.Quicker.utils.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,13 +37,16 @@ public class PublicService {
     private ProductRepository productRepository;
 
     public void uploadData(CustomUserRequestRestDto requestCustomDto, MultipartFile file) throws IOException {
-        CustomUser currentUser = modelMapper.map(requestCustomDto,CustomUser.class);
-        currentUser.setPassword(passwordEncoder.encode(requestCustomDto.getPassword()));
-        currentUser.setRole("USER");
-        currentUser.setProfileImage(Base64.getEncoder().encodeToString(file.getBytes()));
-        currentUser.setImageOriginalName(file.getName());
-        currentUser.setType(file.getContentType());
-        customUserRepository.save(currentUser);
+            CustomUser currentUser = modelMapper.map(requestCustomDto, CustomUser.class);
+            currentUser.setPassword(passwordEncoder.encode(requestCustomDto.getPassword()));
+            currentUser.setRole("USER");
+            currentUser.setStatus(CustomerStatus.ACTIVE.toString());
+            currentUser.setOrderStatus(Status.ACTIVE.toString());
+            currentUser.setDeleteStatus(DeleteStatus.ACTIVE.toString());
+            currentUser.setProfileImage(Base64.getEncoder().encodeToString(file.getBytes()));
+            currentUser.setImageOriginalName(file.getName());
+            currentUser.setType(file.getContentType());
+            customUserRepository.save(currentUser);
     }
 
     public List<Product> getSomeProduct(PageDetail pageDetail) {

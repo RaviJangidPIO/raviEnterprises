@@ -49,8 +49,9 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests(request->request
-                .requestMatchers("/authenticated-user" ,"/api/public/**" ,"/api/rest-public/**" ,"/login-page","/login-error","signin-login").permitAll()
+                .requestMatchers("/authenticated-user" ,"/api/public/**" ,"/api/rest-public/**","uploadInDB","/signup","/login-page","/login-error","signin-login").permitAll()
                 .requestMatchers("/templates/**","/static/files/**" ,"/static/css/**" , "/static/javascript/**" ,"/static/image/**").permitAll()
+                .requestMatchers("/api/customer/**").hasAnyRole(Roles.USER.toString(),Roles.OWNER.toString())
                 .requestMatchers("/api/admin/**","/api/restAdmin/**").hasAnyRole(Roles.ADMIN.toString(),Roles.OWNER.toString())
                 .anyRequest()
                 .authenticated());

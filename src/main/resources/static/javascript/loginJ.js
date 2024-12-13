@@ -26,7 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
                         window.location.href = '/api/admin/dashBoard';
                     } else if (user.role === 'USER') {
                         window.location.href = '/api/public/home';
-                    }else if(user.role == 'OWNER'){
+                    }else if(user.role === 'OWNER'){
                         localStorage.setItem('owner','ownerAuth');
                         window.location.href = '/api/admin/dashBoard';
                     }
@@ -44,3 +44,11 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         alert("Something went wrong");
     }
 });
+
+
+// let currentUser = localStorage.getItem("currentUser");
+// if(currentUser!="null"){
+//     let errorMessage = document.createElement("h5");
+//     errorMessage.innerText = "Already a user , please login...";
+//     $("#error-message-div").append(errorMessage);
+// }

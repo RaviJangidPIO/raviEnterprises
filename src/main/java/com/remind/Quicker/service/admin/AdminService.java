@@ -6,8 +6,7 @@ import com.remind.Quicker.entities.CustomUser;
 import com.remind.Quicker.entities.Product;
 import com.remind.Quicker.repository.CustomUserRepository;
 import com.remind.Quicker.repository.ProductRepository;
-import com.remind.Quicker.utils.PageDetail;
-import com.remind.Quicker.utils.Roles;
+import com.remind.Quicker.utils.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +20,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
@@ -43,18 +43,25 @@ public class AdminService {
 
     public void uploadProduct(ProductRequestDto productRequestDto, MultipartFile file) throws IOException {
         Product product = modelMapper.map(productRequestDto,Product.class);
+        product.setDeleteStatus(DeleteStatus.ACTIVE.toString());
         product.setProductImage(Base64.getEncoder().encodeToString(file.getBytes()));
         productRepository.save(product);
     }
 
     public List<Product> getProducts() {
-        return productRepository.findAll();
+        return productRepository
+                .findAll()
+                .stream()
+                .filter(product -> product.getDeleteStatus().equals(DeleteStatus.ACTIVE.toString())).toList();
     }
 
     public void addSignupInfo(CustomUserRequestRestDto requestCustomDto, MultipartFile file) throws IOException {
         CustomUser currentUser = modelMapper.map(requestCustomDto,CustomUser.class);
         currentUser.setPassword(passwordEncoder.encode(requestCustomDto.getPassword()));
         currentUser.setRole("ADMIN");
+        currentUser.setStatus(CustomerStatus.ACTIVE.toString());
+        currentUser.setOrderStatus(Status.ACTIVE.toString());
+        currentUser.setDeleteStatus(DeleteStatus.ACTIVE.toString());
         currentUser.setProfileImage(Base64.getEncoder().encodeToString(file.getBytes()));
         currentUser.setImageOriginalName(file.getName());
         currentUser.setType(file.getContentType());
@@ -68,11 +75,14 @@ public class AdminService {
 //        return customUsersList;
 //    }
     public List<CustomUser> getUsersOnce() {
-        return userRepository.findAll();
+        return userRepository
+                .findAll()
+                .stream()
+                .filter(user-> user.getDeleteStatus().equals(DeleteStatus.ACTIVE.toString())).toList();
     }
 
     public void deleteProductById(Long id) {
-        productRepository.deleteById(id);
+        productRepository.deactivateProduct(id);
     }
 
     public void deleteCustomUserById(Long id){
@@ -81,7 +91,7 @@ public class AdminService {
             if((currentUser.getRole().equals(Roles.ADMIN.toString())) || currentUser.getRole().equals(Roles.OWNER.toString())){
 
             }else{
-                userRepository.deleteById(id);
+                userRepository.deactivateUser(id);
             }
         });
 

@@ -45,11 +45,13 @@ function getProductsFromController(pageDetail) {
         inputBox.setAttribute("type", "number");
         inputBox.setAttribute("placeholder", "pieces");
         inputBox.setAttribute("name", "pieces");
-        inputBox.setAttribute("id", "piecesId");
+        let inputId = 'inputPieces' + product['id'];
+        inputBox.setAttribute("id", inputId);
         inputBox.setAttribute("class", "form-control mx-1 mb-2");
 
         let btn = document.createElement('button');
-        btn.setAttribute("class", "btn btn-primary");
+        btn.setAttribute("class", "addCartBtn");
+        btn.setAttribute("data-id",product["id"]);
         btn.innerText = "Add Cart";
 
         div4.append(inputBox);
@@ -70,6 +72,15 @@ function getProductsFromController(pageDetail) {
     }
   });
 }
+
+$(document).on('click','.addCartBtn',function(){
+  let productId = $(this).data('id');
+  const currentId = '#inputPieces' + productId;
+  let totalPieces = Number($(currentId).val());
+ $.post("/api/rest-customer/add-cart",{id:productId,pieces:totalPieces},function(){
+
+ });
+});
 
 
 function getSizeOfProductData() {
@@ -96,9 +107,6 @@ function creatingPagingBtns(totalBtns) {
 
 getSizeOfProductData();
 
-
-
-
 let prevId;
 $(document).on('click', '.currentPaging', function () {
   $("#mainDivContainingAllCards").empty();
@@ -113,3 +121,5 @@ $(document).on('click', '.currentPaging', function () {
   getProductsFromController(allProducts);
 
 });
+
+
